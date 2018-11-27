@@ -1,0 +1,170 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
+	
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+	
+	<style>
+		.container, h1{
+			margin-top: 10px;
+		}
+		
+		h1, .btn-group{
+			margin-bottom: 20px;
+		}
+		
+	</style>
+	<script>
+	
+		function generate_price(){
+			return (Math.floor(Math.random()*900) + 100) + " $";
+		}
+	
+		var phones = [
+			{
+				title: "iPhone 8",
+				price: generate_price()
+			},
+			{
+				title: "iPhone 7",
+				price: generate_price()
+			},
+			{
+				title: "Apple iPhone 6",
+				price: generate_price()
+			},
+			{
+				title: "Samsung Galaxy S9",
+				price: generate_price()
+			},
+			{
+				title: "Nokia 3310",
+				price: generate_price()
+			},
+			{
+				title: "HTC Two M3",
+				price: generate_price()
+			},
+			{
+				title: "Lenovo H6000",
+				price: generate_price()
+			},
+			{
+				title: "Microsoft Lumia 950",
+				price: generate_price()
+			},
+			{
+				title: "Sony Ericsson K750 Gold",
+				price: generate_price()
+			}			
+		];
+		
+		console.dir(phones);
+		
+		/***Write code after this line***/
+		
+				
+	</script>
+	
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-12 text-center">
+				<h1 class="display-1"><i class="fa fa-mobile" aria-hidden="true"></i> PhonesShop</h1>
+			</div>	
+			
+		<div class="col-12 text-center">
+				<div class="btn-group btn-group-lg">
+					<button class="btn btn-secondary" data-direction="grow">
+						<i class="fa fa-usd"></i>
+						<i class="fa fa-arrow-circle-o-up" aria-hidden="true"></i>
+						Price Grow
+					</button>
+					<button class="btn btn-secondary" data-direction="fall">
+						<i class="fa fa-usd"></i>
+						<i class="fa fa-arrow-circle-o-down" aria-hidden="true"></i>
+						Price Fall
+					</button>
+				</div>
+			</div>
+	
+			<div class="col-6 offset-3">
+				<ul class="list-group">
+				
+					<!-- //One row code example
+					
+					<li class="list-group-item justify-content-between">
+						iPhone 8
+						<span class="badge badge-default badge-pill">899 $</span>
+					</li>
+					
+					-->
+					
+				</ul>
+			</div>
+		</div>	
+	</div>
+	
+<script>	
+	
+	var ul = document.querySelector("ul");
+function draw(){
+	ul.innerHTML = "";
+	phones.forEach (item => {
+		var li = document.createElement("li");
+		li.className = "list-group-item justify-content-between";
+		li.innerHTML = item.title;
+		
+		var span = document.createElement("span");
+		span.className = "badge badge-default badge-pill"
+		span.innerHTML = item.price;
+		
+		li.appendChild(span);
+		ul.appendChild(li);
+	});
+};
+	draw();
+var btn1 = document.querySelector("button");	
+var btn2 = document.querySelector('div > button:last-child');	
+
+
+btn1.onclick = function(){
+	btn1.classList.remove("btn-secondary");
+	btn1.classList.add("btn-success");
+	btn2.classList.add("btn-secondary");
+	btn2.classList.remove("btn-success");
+	
+	phones.sort((a,b) => parseInt(a.price) - parseInt(b.price));
+	draw();
+}
+	
+		
+
+btn2.onclick = function(){
+	btn2.classList.remove("btn-secondary");
+	btn2.classList.add("btn-success");
+	btn1.classList.add("btn-secondary");
+	btn1.classList.remove("btn-success");
+	
+	phones.sort((a,b) => parseInt(b.price) - parseInt(a.price));
+	draw();
+}
+
+	
+
+	
+	
+</script>	
+</body>
+</html>
